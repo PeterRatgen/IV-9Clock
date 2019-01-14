@@ -35,6 +35,7 @@ At this time we-ve yet to examine power delivery to the chips.
 - ATmega328P
 - 16 MHz crystal https://www.sparkfun.com/products/536
 - Wires
+- Arduino Nano
 - 22 pF capacitor
 - 220 Ohm resistor  for the numitrons because, 4.5V = 19.5 mA/x, solved for x = 230
 
