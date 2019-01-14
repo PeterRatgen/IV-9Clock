@@ -9,7 +9,7 @@ The preliminary choice of microcontroller is the ATMEL ATmega328P. Because an Ar
 
 - Preliminary board schematic **(WIP)**
 - Development component list
-- Program development
+- Program development, for this the Arduino will be used
 - Custom board schematic
 - Assembly and finish
 
@@ -24,7 +24,9 @@ At this time, using shift registers presents themselves as the best way of commu
 
 A shift register (the TPIC6B595N model) is the logical choice as, it is possible to control 6 displays with four ports(the SRCK, SRCLR, RCLK and SER_IN ports). 
 
-We will use connectors to connect the IV-9's, this should give the ability to swap out the numitrons at ease. As the connectors on the IV-9's are circular the plan is to use this: <img src="https://github.com/PeterRatgen/IV-9Clock/blob/master/connection.jpg" width = "200"> scheme using two 1x5 connectors.
+We will use connectors to connect the IV-9's, this should give the ability to swap out the numitrons at ease. As the connectors on the IV-9's are circular the plan is to use this: <img src="https://github.com/PeterRatgen/IV-9Clock/blob/master/connection.jpg" width = "200"> scheme using two 1x5 connectors. However will first be relevant when producing the final custom board layout. 
+
+At this time we-ve yet to examine power delivery to the chips. 
 
 ## Component list
 
@@ -34,7 +36,12 @@ We will use connectors to connect the IV-9's, this should give the ability to sw
 - 16 MHz crystal https://www.sparkfun.com/products/536
 - Wires
 - 22 pF capacitor
-- 220 Ohm resistor
+- 220 Ohm resistor  for the numitrons because, 4.5V = 19.5 mA/x, solved for x = 230
+
+### To-buy
+
+- USB to TTL, to program the processor
+- Power supply (maybe a varible one)
 
 ### Contraints of components
 
@@ -53,3 +60,6 @@ http://www.tube-tester.com/sites/nixie/data/IV-9/iv-9.htm
 
 #### Arduino Nano
 https://store.arduino.cc/arduino-nano
+
+#### TPIC6B595
+http://www.ti.com/lit/ds/symlink/tpic6b595.pdf
