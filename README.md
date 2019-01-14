@@ -15,9 +15,12 @@ The preliminary choice of microcontroller is the ATMEL ATmega328P. Because an Ar
 
 ## Preliminary board schematic
 
-We will use an ATmega328P. For timekeeping a 16 MHz crystal will be used. 
+We will use an ATmega328P. For timekeeping a 16 MHz crystal will be used. To the crystal we will use to capacitors:
 
-$CL = (C1 * C2) / (C1 + C2) + Cstray$
+CL = (C1 * C2) / (C1 + C2) + Cstray, CL = capcitative load of the crystal = 20, Cstray = 4pF. Here C1 = C2.
+From this we get C1 = C2 = 32 pF.
+
+
 
 ## Component list
 
