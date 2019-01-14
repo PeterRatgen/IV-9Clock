@@ -1,0 +1,149 @@
+EESchema Schematic File Version 4
+LIBS:Urprojektt-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L atmel:ATMEGA328-A IC?
+U 1 1 5C3BE941
+P 5500 3550
+F 0 "IC?" H 4750 4800 50  0000 L BNN
+F 1 "ATMEGA328-P" H 5900 2150 50  0000 L BNN
+F 2 "TQFP32" H 5500 3550 50  0000 C CIN
+F 3 "" H 5500 3550 50  0000 C CNN
+	1    5500 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5C3BEAA8
+P 4450 4850
+F 0 "#PWR?" H 4450 4600 50  0001 C CNN
+F 1 "GND" H 4450 4700 50  0000 C CNN
+F 2 "" H 4450 4850 50  0000 C CNN
+F 3 "" H 4450 4850 50  0000 C CNN
+	1    4450 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 4750 4450 4750
+Wire Wire Line
+	4450 4550 4450 4650
+Wire Wire Line
+	4600 4650 4450 4650
+Connection ~ 4450 4750
+Wire Wire Line
+	4600 4550 4450 4550
+Connection ~ 4450 4650
+$Comp
+L Device:Crystal Y1
+U 1 1 5C3BEBC7
+P 6900 3100
+F 0 "Y1" V 6900 3250 50  0000 C CNN
+F 1 "16MHz" V 6700 3100 50  0000 C CNN
+F 2 "" H 6900 3100 50  0000 C CNN
+F 3 "" H 6900 3100 50  0000 C CNN
+	1    6900 3100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3050 6650 3050
+Wire Wire Line
+	6650 3050 6650 2950
+Wire Wire Line
+	6650 2950 6900 2950
+Wire Wire Line
+	6500 3150 6650 3150
+Wire Wire Line
+	6650 3150 6650 3250
+Wire Wire Line
+	6650 3250 6900 3250
+$Comp
+L power:GND #PWR?
+U 1 1 5C3BEEA0
+P 7400 3300
+F 0 "#PWR?" H 7400 3050 50  0001 C CNN
+F 1 "GND" H 7400 3150 50  0000 C CNN
+F 2 "" H 7400 3300 50  0000 C CNN
+F 3 "" H 7400 3300 50  0000 C CNN
+	1    7400 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C2
+U 1 1 5C3BEF4C
+P 7200 2950
+F 0 "C2" V 7250 3000 50  0000 L CNN
+F 1 "32 pF" V 7050 2850 50  0000 L CNN
+F 2 "" H 7200 2950 50  0000 C CNN
+F 3 "" H 7200 2950 50  0000 C CNN
+	1    7200 2950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4450 4750 4450 4850
+Wire Wire Line
+	4450 4650 4450 4750
+$Comp
+L Device:C_Small C1
+U 1 1 5C3BF6A0
+P 7200 3250
+F 0 "C1" V 7250 3300 50  0000 L CNN
+F 1 "32 pF" V 7050 3150 50  0000 L CNN
+F 2 "" H 7200 3250 50  0000 C CNN
+F 3 "" H 7200 3250 50  0000 C CNN
+	1    7200 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7100 2950 6900 2950
+Connection ~ 6900 2950
+Connection ~ 6900 3250
+Wire Wire Line
+	6900 3250 7100 3250
+Wire Wire Line
+	7400 3250 7300 3250
+Wire Wire Line
+	7400 3250 7400 3300
+Wire Wire Line
+	7300 2950 7400 2950
+Wire Wire Line
+	7400 2950 7400 3250
+Connection ~ 7400 3250
+$Comp
+L power:VCC #PWR?
+U 1 1 5C3BFC87
+P 4500 2350
+F 0 "#PWR?" H 4500 2200 50  0001 C CNN
+F 1 "VCC" H 4517 2523 50  0000 C CNN
+F 2 "" H 4500 2350 50  0001 C CNN
+F 3 "" H 4500 2350 50  0001 C CNN
+	1    4500 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 2750 4500 2750
+Wire Wire Line
+	4500 2750 4500 2550
+Wire Wire Line
+	4600 2450 4500 2450
+Connection ~ 4500 2450
+Wire Wire Line
+	4500 2450 4500 2350
+Wire Wire Line
+	4600 2550 4500 2550
+Connection ~ 4500 2550
+Wire Wire Line
+	4500 2550 4500 2450
+$EndSCHEMATC
