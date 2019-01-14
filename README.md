@@ -33,3 +33,6 @@ https://www.youtube.com/watch?v=VxMV6wGS3NY&ab_channel=GreatScott%21
 
 #### IV-9
 http://www.tube-tester.com/sites/nixie/data/IV-9/iv-9.htm
+
+#### Arduino Nano
+https://store.arduino.cc/arduino-nano
