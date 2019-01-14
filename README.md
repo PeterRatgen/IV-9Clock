@@ -22,6 +22,10 @@ From this we get C1 = C2 = 32 pF.
 
 At this time, using shift registers presents themselves as the best way of communicating with the IV-9 numitrons. The TPIC6B595N shift register will be used, as it can handle the 20 mA current.
 
+A shift register (the TPIC6B595N model) is the logical choice as, it is possible to control 6 displays with four ports(the SRCK, SRCLR, RCLK and SER_IN ports). 
+
+We will use connectors to connect the IV-9's, this should give the ability to swap out the numitrons at ease. As the connectors on the IV-9's are circular the plan is to use this: ![alt text](https://github.com/PeterRatgen/IV-9Clock/blob/master/connection.jpg) scheme using two 1x5 connectors.
+
 ## Component list
 
 ### Bought
@@ -31,7 +35,6 @@ At this time, using shift registers presents themselves as the best way of commu
 - Wires
 - 22 pF capacitor
 - 220 Ohm resistor
-
 
 ### Contraints of components
 
