@@ -7,11 +7,15 @@ The preliminary choice of microcontroller is the ATMEL ATmega328P. Because an Ar
 
 # Milestones:
 
-- Preliminary board schematic
+- Preliminary board schematic **(WIP)**
 - Development component list
 - Program development
 - Custom board schematic
 - Assembly and finish
+
+## Board schematic
+
+
 
 ## Component list
 
