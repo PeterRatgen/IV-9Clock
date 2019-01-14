@@ -24,7 +24,7 @@ At this time, using shift registers presents themselves as the best way of commu
 
 A shift register (the TPIC6B595N model) is the logical choice as, it is possible to control 6 displays with four ports(the SRCK, SRCLR, RCLK and SER_IN ports). 
 
-We will use connectors to connect the IV-9's, this should give the ability to swap out the numitrons at ease. As the connectors on the IV-9's are circular the plan is to use this: ![alt text](https://github.com/PeterRatgen/IV-9Clock/blob/master/connection.jpg) scheme using two 1x5 connectors.
+We will use connectors to connect the IV-9's, this should give the ability to swap out the numitrons at ease. As the connectors on the IV-9's are circular the plan is to use this: ![alt text](https://github.com/PeterRatgen/IV-9Clock/blob/master/connection.jpg | width = 50) scheme using two 1x5 connectors.
 
 ## Component list
 
