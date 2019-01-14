@@ -20,7 +20,7 @@ We will use an ATmega328P. For timekeeping a 16 MHz crystal will be used. To the
 CL = (C1 * C2) / (C1 + C2) + Cstray, CL = capcitative load of the crystal = 20, Cstray = 4pF. Here C1 = C2.  
 From this we get C1 = C2 = 32 pF.
 
-At this time, using shift registers presents themselves as the best way of communicating with the IV-9 numitrons. The 74HC595 or tpic6b595n shift registers is are a great option.
+At this time, using shift registers presents themselves as the best way of communicating with the IV-9 numitrons. The TPIC6B595N shift register will be used, as it can handle the 20 mA current.
 
 ## Component list
 
