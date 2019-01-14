@@ -24,8 +24,14 @@ At this time, using shift registers presents themselves as the best way of commu
 
 ## Component list
 
+### Bought
+
 - ATmega328P
 - 16 MHz crystal https://www.sparkfun.com/products/536
+- Wires
+- 22 pF capacitor
+- 220 Ohm resistor
+
 
 ### Contraints of components
 
