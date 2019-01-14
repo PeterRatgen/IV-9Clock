@@ -13,11 +13,16 @@ The preliminary choice of microcontroller is the ATMEL ATmega328P. Because an Ar
 - Custom board schematic
 - Assembly and finish
 
-## Board schematic
+## Preliminary board schematic
 
+We will use an ATmega328P. For timekeeping a 16 MHz crystal will be used. 
 
+$CL = (C1 * C2) / (C1 + C2) + Cstray$
 
 ## Component list
+
+- ATmega328P
+- 16 MHz crystal https://www.sparkfun.com/products/536
 
 ### Contraints of components
 
