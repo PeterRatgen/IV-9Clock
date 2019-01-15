@@ -115,17 +115,6 @@ Wire Wire Line
 Wire Wire Line
 	4950 3150 4950 3450
 Connection ~ 4950 3450
-$Comp
-L power:VCC #PWR?
-U 1 1 5C3BFC87
-P 2250 2550
-F 0 "#PWR?" H 2250 2400 50  0001 C CNN
-F 1 "VCC" H 2267 2723 50  0000 C CNN
-F 2 "" H 2250 2550 50  0001 C CNN
-F 3 "" H 2250 2550 50  0001 C CNN
-	1    2250 2550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2350 2950 2250 2950
 Wire Wire Line
@@ -141,10 +130,10 @@ Connection ~ 2250 2750
 Wire Wire Line
 	2250 2750 2250 2650
 $Comp
-L Interface_Expansion:TPIC6595 U?
+L Interface_Expansion:TPIC6595 U1
 U 1 1 5C3CBA63
 P 5850 3100
-F 0 "U?" H 5600 3750 50  0000 C CNN
+F 0 "U1" H 5600 3750 50  0000 C CNN
 F 1 "TPIC6595" H 5600 3650 50  0000 C CNN
 F 2 "" H 6500 2450 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tpic6595.pdf" H 5850 3050 50  0001 C CNN
@@ -152,55 +141,55 @@ F 3 "http://www.ti.com/lit/ds/symlink/tpic6595.pdf" H 5850 3050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_Expansion:TPIC6595 U?
+L Interface_Expansion:TPIC6595 U2
 U 1 1 5C3CC5E1
 P 7400 3100
-F 0 "U?" H 7400 3878 50  0000 C CNN
-F 1 "TPIC6595" H 7400 3787 50  0000 C CNN
+F 0 "U2" H 7500 3675 50  0000 C CNN
+F 1 "TPIC6595" H 7175 3675 50  0000 C CNN
 F 2 "" H 8050 2450 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tpic6595.pdf" H 7400 3050 50  0001 C CNN
 	1    7400 3100
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_Expansion:TPIC6595 U?
+L Interface_Expansion:TPIC6595 U3
 U 1 1 5C3CC691
 P 8850 3100
-F 0 "U?" H 8850 3878 50  0000 C CNN
-F 1 "TPIC6595" H 8850 3787 50  0000 C CNN
+F 0 "U3" H 8950 3675 50  0000 C CNN
+F 1 "TPIC6595" H 8600 3675 50  0000 C CNN
 F 2 "" H 9500 2450 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tpic6595.pdf" H 8850 3050 50  0001 C CNN
 	1    8850 3100
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_Expansion:TPIC6595 U?
+L Interface_Expansion:TPIC6595 U4
 U 1 1 5C3CC70D
 P 5850 4650
-F 0 "U?" H 5850 5428 50  0000 C CNN
-F 1 "TPIC6595" H 5850 5337 50  0000 C CNN
+F 0 "U4" H 5925 5200 50  0000 C CNN
+F 1 "TPIC6595" H 5600 5200 50  0000 C CNN
 F 2 "" H 6500 4000 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tpic6595.pdf" H 5850 4600 50  0001 C CNN
 	1    5850 4650
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_Expansion:TPIC6595 U?
+L Interface_Expansion:TPIC6595 U5
 U 1 1 5C3CC791
 P 7400 4650
-F 0 "U?" H 7400 5428 50  0000 C CNN
-F 1 "TPIC6595" H 7400 5337 50  0000 C CNN
+F 0 "U5" H 7475 5200 50  0000 C CNN
+F 1 "TPIC6595" H 7125 5200 50  0000 C CNN
 F 2 "" H 8050 4000 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tpic6595.pdf" H 7400 4600 50  0001 C CNN
 	1    7400 4650
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_Expansion:TPIC6595 U?
+L Interface_Expansion:TPIC6595 U6
 U 1 1 5C3CC7EA
 P 8850 4650
-F 0 "U?" H 8850 5428 50  0000 C CNN
-F 1 "TPIC6595" H 8850 5337 50  0000 C CNN
+F 0 "U6" H 8950 5225 50  0000 C CNN
+F 1 "TPIC6595" H 8600 5200 50  0000 C CNN
 F 2 "" H 9500 4000 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tpic6595.pdf" H 8850 4600 50  0001 C CNN
 	1    8850 4650
@@ -337,17 +326,6 @@ Wire Wire Line
 	6350 3100 6450 3100
 Wire Wire Line
 	6450 2325 6200 2325
-$Comp
-L power:GND #PWR?
-U 1 1 5C423878
-P 6600 2100
-F 0 "#PWR?" H 6600 1850 50  0001 C CNN
-F 1 "GND" H 6605 1927 50  0000 C CNN
-F 2 "" H 6600 2100 50  0001 C CNN
-F 3 "" H 6600 2100 50  0001 C CNN
-	1    6600 2100
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	6600 2050 6600 2100
 Wire Wire Line
@@ -480,8 +458,6 @@ F 3 "~" H 6500 2150 50  0001 C CNN
 	1    6500 2150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6525 3400 6525 2250
 Wire Wire Line
 	6450 3100 6450 2325
 $Comp
@@ -1664,11 +1640,9 @@ Wire Wire Line
 Wire Wire Line
 	5200 3000 5200 3950
 Wire Wire Line
-	6650 3000 6650 3925
-Wire Wire Line
 	5300 2900 5300 3925
 Wire Wire Line
-	6700 2900 6700 4450
+	6700 2900 6700 3925
 Wire Wire Line
 	8150 2900 8150 3925
 Wire Wire Line
@@ -1676,11 +1650,8 @@ Wire Wire Line
 Wire Wire Line
 	8325 3925 8325 4450
 Wire Wire Line
-	8150 3925 6650 3925
+	8150 3925 6700 3925
 Connection ~ 8150 3925
-Connection ~ 6650 3925
-Wire Wire Line
-	6650 3925 6650 3950
 Wire Wire Line
 	6650 3925 5300 3925
 Connection ~ 5300 3925
@@ -1737,4 +1708,90 @@ Wire Wire Line
 	4350 4250 4250 4250
 Wire Wire Line
 	4250 4350 4350 4350
+$Comp
+L power:VCC #PWR?
+U 1 1 5CE68F8A
+P 2250 2550
+F 0 "#PWR?" H 2250 2400 50  0001 C CNN
+F 1 "VCC" H 2267 2723 50  0000 C CNN
+F 2 "" H 2250 2550 50  0001 C CNN
+F 3 "" H 2250 2550 50  0001 C CNN
+	1    2250 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5CE68FE6
+P 5850 2500
+F 0 "#PWR?" H 5850 2350 50  0001 C CNN
+F 1 "VCC" H 5867 2673 50  0000 C CNN
+F 2 "" H 5850 2500 50  0001 C CNN
+F 3 "" H 5850 2500 50  0001 C CNN
+	1    5850 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5CE69042
+P 7400 2500
+F 0 "#PWR?" H 7400 2350 50  0001 C CNN
+F 1 "VCC" H 7275 2600 50  0000 C CNN
+F 2 "" H 7400 2500 50  0001 C CNN
+F 3 "" H 7400 2500 50  0001 C CNN
+	1    7400 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5CE6909E
+P 5850 4050
+F 0 "#PWR?" H 5850 3900 50  0001 C CNN
+F 1 "VCC" H 5867 4223 50  0000 C CNN
+F 2 "" H 5850 4050 50  0001 C CNN
+F 3 "" H 5850 4050 50  0001 C CNN
+	1    5850 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5CE690FA
+P 7400 4050
+F 0 "#PWR?" H 7400 3900 50  0001 C CNN
+F 1 "VCC" H 7417 4223 50  0000 C CNN
+F 2 "" H 7400 4050 50  0001 C CNN
+F 3 "" H 7400 4050 50  0001 C CNN
+	1    7400 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5CE6923E
+P 8850 2500
+F 0 "#PWR?" H 8850 2350 50  0001 C CNN
+F 1 "VCC" H 8867 2673 50  0000 C CNN
+F 2 "" H 8850 2500 50  0001 C CNN
+F 3 "" H 8850 2500 50  0001 C CNN
+	1    8850 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5CE6929A
+P 8850 4050
+F 0 "#PWR?" H 8850 3900 50  0001 C CNN
+F 1 "VCC" H 8867 4223 50  0000 C CNN
+F 2 "" H 8850 4050 50  0001 C CNN
+F 3 "" H 8850 4050 50  0001 C CNN
+	1    8850 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 3000 6650 3950
+Connection ~ 6700 3925
+Wire Wire Line
+	6700 3925 6700 4450
+Wire Wire Line
+	6700 3925 6650 3925
+Wire Wire Line
+	6525 2250 6525 3400
 $EndSCHEMATC
