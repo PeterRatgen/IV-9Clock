@@ -28,7 +28,7 @@ We will use connectors to connect the IV-9's, this should give the ability to sw
 
 At this time we-ve yet to examine power delivery to the chips. 
 
-At this time, we've experimented with programming "hello world" type programs. Of course C programming will be used. `avr-gcc` will be used for compiling code and `avrdude` will be used for uploading code. To program the chip we will use the PICKIT2, as is supported by `avrdude`. to control the PICKIT2 we will use MPLAB IDE 8.92.
+At this time, we've experimented with programming "hello world" type programs. Of course C programming will be used. `avr-gcc` will be used for compiling code and `avrdude` will be used for uploading code. More specifically we will use `AVRDUDESS 2.6`. To program the chip we will use the PICKIT2, as is supported by `AVRDUDESS 2.6`. to control the PICKIT2 we will use MPLAB IDE 8.92.
 
 ## Component list
 
