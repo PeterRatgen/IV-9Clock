@@ -15,6 +15,8 @@ The preliminary choice of microcontroller is the ATMEL ATmega328P. Because an Ar
 
 ## Preliminary board schematic
 
+#### Choices of components
+
 We will use an ATmega328P. For timekeeping a 16 MHz crystal will be used. To the crystal we will use to capacitors:
 
 CL = (C1 * C2) / (C1 + C2) + Cstray, CL = capcitative load of the crystal = 20, Cstray = 4pF. Here C1 = C2.  
@@ -26,9 +28,10 @@ A shift register (the TPIC6B595N model) is the logical choice as, it is possible
 
 We will use connectors to connect the IV-9's, this should give the ability to swap out the numitrons at ease. As the connectors on the IV-9's are circular the plan is to use this: <img src="https://github.com/PeterRatgen/IV-9Clock/blob/master/connection.jpg" width = "200"> scheme using two 1x5 connectors. However will first be relevant when producing the final custom board layout. 
 
-At this time we-ve yet to examine power delivery to the chips. 
+## Programming
 
 At this time, we've experimented with programming "hello world" type programs. Of course C programming will be used. `avr-gcc` will be used for compiling code and `avrdude` will be used for uploading code. More specifically we will use `AVRDUDESS 2.6`. To program the chip we will use the PICKIT2, as is supported by `AVRDUDESS 2.6`. to control the PICKIT2 we will use MPLAB IDE 8.92.
+
 
 ## Component list
 
