@@ -15,6 +15,8 @@
 #define LATCH (1<<PB2)        //SS   (RCK)
 #define CLOCK (1<<PB5)        //SCK  (SCK)
 
+#define ONE 0b00011000
+
 int i = 0;
 
 int main(void)
@@ -35,7 +37,7 @@ int main(void)
 	while(!(SPSR & (1<<SPIF)));
 	
 	//Shift in some more data since I have two shift registers hooked up
-	SPDR = 0b11000011;        //This should light alternating LEDs
+	SPDR = ONE;        //This should light alternating LEDs
 	//Wait for SPI process to finish
 	while(!(SPSR & (1<<SPIF)));
 	
