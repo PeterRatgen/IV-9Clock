@@ -25,6 +25,8 @@ A shift register (the TPIC6B595N model) is the logical choice as, it is possible
 
 We will use connectors to connect the IV-9's, this should give the ability to swap out the numitrons at ease. As the connectors on the IV-9's are circular the plan is to use this: <img src="https://github.com/PeterRatgen/IV-9Clock/blob/master/connection.jpg" width = "200"> scheme using two 1x5 connectors. However will first be relevant when producing the final custom board layout. 
 
+Since the connectors to the IV-9's act as the ground lead the ground lead should be connected to a 4.5V supply. Thus we might consider a way of adjusting 5V to 4.5V.
+
 #### Programming
 
 At this time, we've experimented with programming "hello world" type programs. Of course C programming will be used. `avr-gcc` will be used for compiling code and `avrdude` will be used for uploading code. More specifically we will use `AVRDUDESS 2.6`. To program the chip we will use the PICKIT2, as is supported by `AVRDUDESS 2.6`. to control the PICKIT2 we will use MPLAB IDE 8.92.
@@ -44,7 +46,6 @@ After examining more options, a better way of compling is using `AVRstudio 7.0`.
 
 ### To-buy
 
-- USB to TTL, to program the processor
 - Power supply (maybe a varible one)
 
 ### Contraints of components
