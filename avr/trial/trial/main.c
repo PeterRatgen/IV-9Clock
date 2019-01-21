@@ -1,7 +1,6 @@
 #define F_CPU 16000000UL
 #define BAUD 9600UL
-#define LSBFIRST 0
-#define MSBFIRST 1
+#define LSBFIRST 1
 #define HIGH 0x1
 #define LOW  0x0
 #define INPUT 0x0
@@ -25,18 +24,18 @@ int main(void)
 	SHIFT_PORT &= ~(DATA | LATCH | CLOCK);        //Set control pins low
 	
 	//Setup SPI
-	SPCR = (1<<SPE) | (1<<MSTR);  //Start SPI as Master
+	SPCR = (1<<SPE) | (1<<MSTR)  ;  //Start SPI as Master, 
 	
 	//Pull LATCH low (Important: this is necessary to start the SPI transfer!)
 	SHIFT_PORT &= ~LATCH; // the ~ is a bitwise NOT
 	
 	//Shift in some data
-	SPDR = 0b01010101;        //This should light alternating LEDs
+	SPDR = 0b00111100;        //This should light alternating LEDs
 	//Wait for SPI process to finish
 	while(!(SPSR & (1<<SPIF)));
 	
 	//Shift in some more data since I have two shift registers hooked up
-	SPDR = 0b01010101;        //This should light alternating LEDs
+	SPDR = 0b11000011;        //This should light alternating LEDs
 	//Wait for SPI process to finish
 	while(!(SPSR & (1<<SPIF)));
 	
@@ -67,24 +66,5 @@ void  spiWait(void){
 ISR(TIMER1_COMPA_vect)		//Interrupt Service Routine
 {
 	PORTD ^= (1<<0);
-	//Pull LATCH low (Important: this is necessary to start the SPI transfer!)
-	SHIFT_PORT &= ~LATCH; // the ~ is a bitwise NOT
-	/*if(i%2 == 0){
-		SPDR = 0b01010101;        //This should light alternating LEDs
-		//Wait for SPI process to finish
-		spiWait();
-		i++;
-	}
-	else{
-		SPDR = 0b10101010;        //This should light alternating LEDs
-		//Wait for SPI process to finish
-		spiWait();
-		i++;
-	}*/
-	SPDR = i%256;
-	spiWait();
-	i++;
 	
-	SHIFT_PORT |= LATCH;
-	SHIFT_PORT &= ~LATCH;
 }

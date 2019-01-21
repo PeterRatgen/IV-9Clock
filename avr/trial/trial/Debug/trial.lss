@@ -3,31 +3,29 @@ trial.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001e8  2**0
+  0 .data         00000000  00800100  00800100  00000166  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000174  00000000  00000000  00000074  2**1
+  1 .text         00000112  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000002  00800100  00800100  000001e8  2**0
-                  ALLOC
-  3 .comment      00000030  00000000  00000000  000001e8  2**0
+  2 .comment      00000030  00000000  00000000  00000166  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000218  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000198  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000030  00000000  00000000  00000258  2**0
+  4 .debug_aranges 00000030  00000000  00000000  000001d8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000006d1  00000000  00000000  00000288  2**0
+  5 .debug_info   000006c3  00000000  00000000  00000208  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000646  00000000  00000000  00000959  2**0
+  6 .debug_abbrev 00000639  00000000  00000000  000008cb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000002a3  00000000  00000000  00000f9f  2**0
+  7 .debug_line   0000027f  00000000  00000000  00000f04  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000008c  00000000  00000000  00001244  2**2
+  8 .debug_frame  00000058  00000000  00000000  00001184  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000353  00000000  00000000  000012d0  2**0
+  9 .debug_str    00000353  00000000  00000000  000011dc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000000cb  00000000  00000000  00001623  2**0
+ 10 .debug_loc    00000049  00000000  00000000  0000152f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000020  00000000  00000000  000016ee  2**0
+ 11 .debug_ranges 00000020  00000000  00000000  00001578  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -44,7 +42,7 @@ Disassembly of section .text:
   20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
-  2c:	0c 94 79 00 	jmp	0xf2	; 0xf2 <__vector_11>
+  2c:	0c 94 75 00 	jmp	0xea	; 0xea <__vector_11>
   30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
@@ -78,187 +76,93 @@ Disassembly of section .text:
   7c:	1d 92       	st	X+, r1
 
 0000007e <.do_clear_bss_start>:
-  7e:	a2 30       	cpi	r26, 0x02	; 2
+  7e:	a0 30       	cpi	r26, 0x00	; 0
   80:	b2 07       	cpc	r27, r18
   82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
   84:	0e 94 48 00 	call	0x90	; 0x90 <main>
-  88:	0c 94 b8 00 	jmp	0x170	; 0x170 <_exit>
+  88:	0c 94 87 00 	jmp	0x10e	; 0x10e <_exit>
 
 0000008c <__bad_interrupt>:
   8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000090 <main>:
-int i = 0;
-
-int main(void)
-{
-	//Setup IO
-	SHIFT_REGISTER |= (DATA | LATCH | CLOCK); //Set control pins as outputs
-  90:	84 b1       	in	r24, 0x04	; 4
-  92:	8c 62       	ori	r24, 0x2C	; 44
-  94:	84 b9       	out	0x04, r24	; 4
-	SHIFT_PORT &= ~(DATA | LATCH | CLOCK);        //Set control pins low
-  96:	85 b1       	in	r24, 0x05	; 5
-  98:	83 7d       	andi	r24, 0xD3	; 211
-  9a:	85 b9       	out	0x05, r24	; 5
-	
-	//Setup SPI
-	SPCR = (1<<SPE) | (1<<MSTR);  //Start SPI as Master
-  9c:	80 e5       	ldi	r24, 0x50	; 80
-  9e:	8c bd       	out	0x2c, r24	; 44
-	
-	//Pull LATCH low (Important: this is necessary to start the SPI transfer!)
-	SHIFT_PORT &= ~LATCH; // the ~ is a bitwise NOT
-  a0:	2a 98       	cbi	0x05, 2	; 5
-	
-	//Shift in some data
-	SPDR = 0b01010101;        //This should light alternating LEDs
-  a2:	85 e5       	ldi	r24, 0x55	; 85
-  a4:	8e bd       	out	0x2e, r24	; 46
-	//Wait for SPI process to finish
-	while(!(SPSR & (1<<SPIF)));
-  a6:	0d b4       	in	r0, 0x2d	; 45
-  a8:	07 fe       	sbrs	r0, 7
-  aa:	fd cf       	rjmp	.-6      	; 0xa6 <main+0x16>
-	
-	//Shift in some more data since I have two shift registers hooked up
-	SPDR = 0b01010101;        //This should light alternating LEDs
-  ac:	85 e5       	ldi	r24, 0x55	; 85
-  ae:	8e bd       	out	0x2e, r24	; 46
-	//Wait for SPI process to finish
-	while(!(SPSR & (1<<SPIF)));
-  b0:	0d b4       	in	r0, 0x2d	; 45
-  b2:	07 fe       	sbrs	r0, 7
-  b4:	fd cf       	rjmp	.-6      	; 0xb0 <main+0x20>
-	
-	//Toggle latch to copy data to the storage register
-	SHIFT_PORT |= LATCH;
-  b6:	2a 9a       	sbi	0x05, 2	; 5
-	SHIFT_PORT &= ~LATCH;
-  b8:	2a 98       	cbi	0x05, 2	; 5
-	
-	cli();			//Disable global interrupts
-  ba:	f8 94       	cli
-		TCCR1B |= 1<<CS12;  //| 1<<CS10;	//Divide by 1024
-  bc:	e1 e8       	ldi	r30, 0x81	; 129
-  be:	f0 e0       	ldi	r31, 0x00	; 0
-  c0:	80 81       	ld	r24, Z
-  c2:	84 60       	ori	r24, 0x04	; 4
-  c4:	80 83       	st	Z, r24
-		OCR1A = 15624;		//Count 15624 cycles for 1 second interrupt
-  c6:	88 e0       	ldi	r24, 0x08	; 8
-  c8:	9d e3       	ldi	r25, 0x3D	; 61
-  ca:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7e0089>
-  ce:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7e0088>
-		TCCR1B |= 1<<WGM12;		//Put Timer/Counter1 in CTC mode
-  d2:	80 81       	ld	r24, Z
-  d4:	88 60       	ori	r24, 0x08	; 8
-  d6:	80 83       	st	Z, r24
-		TIMSK1 |= 1<<OCIE1A;		//enable timer compare interrupt
-  d8:	ef e6       	ldi	r30, 0x6F	; 111
-  da:	f0 e0       	ldi	r31, 0x00	; 0
-  dc:	80 81       	ld	r24, Z
-  de:	82 60       	ori	r24, 0x02	; 2
-  e0:	80 83       	st	Z, r24
-	sei();			//Enable global interrupts
-  e2:	78 94       	sei
-	
-	DDRD |= (1<<0);		//Set PortD Pin0 as an output
-  e4:	50 9a       	sbi	0x0a, 0	; 10
-	PORTD |= (1<<0);		//Set PortD Pin0 high to turn on LED
-  e6:	58 9a       	sbi	0x0b, 0	; 11
-  e8:	ff cf       	rjmp	.-2      	; 0xe8 <main+0x58>
-
-000000ea <spiWait>:
-	
 	}
 }
 
 void  spiWait(void){
 	while(!(SPSR & (1<<SPIF)));
-  ea:	0d b4       	in	r0, 0x2d	; 45
-  ec:	07 fe       	sbrs	r0, 7
-  ee:	fd cf       	rjmp	.-6      	; 0xea <spiWait>
 }
-  f0:	08 95       	ret
+  90:	84 b1       	in	r24, 0x04	; 4
+  92:	8c 62       	ori	r24, 0x2C	; 44
+  94:	84 b9       	out	0x04, r24	; 4
+  96:	85 b1       	in	r24, 0x05	; 5
+  98:	83 7d       	andi	r24, 0xD3	; 211
+  9a:	85 b9       	out	0x05, r24	; 5
+  9c:	80 e5       	ldi	r24, 0x50	; 80
+  9e:	8c bd       	out	0x2c, r24	; 44
+  a0:	2a 98       	cbi	0x05, 2	; 5
+  a2:	8c e3       	ldi	r24, 0x3C	; 60
+  a4:	8e bd       	out	0x2e, r24	; 46
+  a6:	0d b4       	in	r0, 0x2d	; 45
+  a8:	07 fe       	sbrs	r0, 7
+  aa:	fd cf       	rjmp	.-6      	; 0xa6 <main+0x16>
+  ac:	83 ec       	ldi	r24, 0xC3	; 195
+  ae:	8e bd       	out	0x2e, r24	; 46
+  b0:	0d b4       	in	r0, 0x2d	; 45
+  b2:	07 fe       	sbrs	r0, 7
+  b4:	fd cf       	rjmp	.-6      	; 0xb0 <main+0x20>
+  b6:	2a 9a       	sbi	0x05, 2	; 5
+  b8:	2a 98       	cbi	0x05, 2	; 5
+  ba:	f8 94       	cli
+  bc:	e1 e8       	ldi	r30, 0x81	; 129
+  be:	f0 e0       	ldi	r31, 0x00	; 0
+  c0:	80 81       	ld	r24, Z
+  c2:	84 60       	ori	r24, 0x04	; 4
+  c4:	80 83       	st	Z, r24
+  c6:	88 e0       	ldi	r24, 0x08	; 8
+  c8:	9d e3       	ldi	r25, 0x3D	; 61
+  ca:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7e0089>
+  ce:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7e0088>
+  d2:	80 81       	ld	r24, Z
+  d4:	88 60       	ori	r24, 0x08	; 8
+  d6:	80 83       	st	Z, r24
+  d8:	ef e6       	ldi	r30, 0x6F	; 111
+  da:	f0 e0       	ldi	r31, 0x00	; 0
+  dc:	80 81       	ld	r24, Z
+  de:	82 60       	ori	r24, 0x02	; 2
+  e0:	80 83       	st	Z, r24
+  e2:	78 94       	sei
+  e4:	50 9a       	sbi	0x0a, 0	; 10
+  e6:	58 9a       	sbi	0x0b, 0	; 11
+  e8:	ff cf       	rjmp	.-2      	; 0xe8 <main+0x58>
 
-000000f2 <__vector_11>:
+000000ea <__vector_11>:
 
 ISR(TIMER1_COMPA_vect)		//Interrupt Service Routine
 {
-  f2:	1f 92       	push	r1
-  f4:	0f 92       	push	r0
-  f6:	0f b6       	in	r0, 0x3f	; 63
-  f8:	0f 92       	push	r0
-  fa:	11 24       	eor	r1, r1
-  fc:	2f 93       	push	r18
-  fe:	3f 93       	push	r19
- 100:	4f 93       	push	r20
- 102:	5f 93       	push	r21
- 104:	6f 93       	push	r22
- 106:	7f 93       	push	r23
- 108:	8f 93       	push	r24
- 10a:	9f 93       	push	r25
- 10c:	af 93       	push	r26
- 10e:	bf 93       	push	r27
- 110:	ef 93       	push	r30
- 112:	ff 93       	push	r31
+  ea:	1f 92       	push	r1
+  ec:	0f 92       	push	r0
+  ee:	0f b6       	in	r0, 0x3f	; 63
+  f0:	0f 92       	push	r0
+  f2:	11 24       	eor	r1, r1
+  f4:	8f 93       	push	r24
+  f6:	9f 93       	push	r25
 	PORTD ^= (1<<0);
- 114:	9b b1       	in	r25, 0x0b	; 11
- 116:	81 e0       	ldi	r24, 0x01	; 1
- 118:	89 27       	eor	r24, r25
- 11a:	8b b9       	out	0x0b, r24	; 11
-	//Pull LATCH low (Important: this is necessary to start the SPI transfer!)
-	SHIFT_PORT &= ~LATCH; // the ~ is a bitwise NOT
- 11c:	2a 98       	cbi	0x05, 2	; 5
-		SPDR = 0b10101010;        //This should light alternating LEDs
-		//Wait for SPI process to finish
-		spiWait();
-		i++;
-	}*/
-	SPDR = i%256;
- 11e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 122:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
- 126:	90 78       	andi	r25, 0x80	; 128
- 128:	99 23       	and	r25, r25
- 12a:	1c f4       	brge	.+6      	; 0x132 <__vector_11+0x40>
- 12c:	01 97       	sbiw	r24, 0x01	; 1
- 12e:	9f 6f       	ori	r25, 0xFF	; 255
- 130:	01 96       	adiw	r24, 0x01	; 1
- 132:	8e bd       	out	0x2e, r24	; 46
-	spiWait();
- 134:	0e 94 75 00 	call	0xea	; 0xea <spiWait>
-	i++;
- 138:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 13c:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
- 140:	01 96       	adiw	r24, 0x01	; 1
- 142:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <_edata+0x1>
- 146:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+  f8:	9b b1       	in	r25, 0x0b	; 11
+  fa:	81 e0       	ldi	r24, 0x01	; 1
+  fc:	89 27       	eor	r24, r25
+  fe:	8b b9       	out	0x0b, r24	; 11
 	
-	SHIFT_PORT |= LATCH;
- 14a:	2a 9a       	sbi	0x05, 2	; 5
-	SHIFT_PORT &= ~LATCH;
- 14c:	2a 98       	cbi	0x05, 2	; 5
- 14e:	ff 91       	pop	r31
- 150:	ef 91       	pop	r30
- 152:	bf 91       	pop	r27
- 154:	af 91       	pop	r26
- 156:	9f 91       	pop	r25
- 158:	8f 91       	pop	r24
- 15a:	7f 91       	pop	r23
- 15c:	6f 91       	pop	r22
- 15e:	5f 91       	pop	r21
- 160:	4f 91       	pop	r20
- 162:	3f 91       	pop	r19
- 164:	2f 91       	pop	r18
- 166:	0f 90       	pop	r0
- 168:	0f be       	out	0x3f, r0	; 63
- 16a:	0f 90       	pop	r0
- 16c:	1f 90       	pop	r1
- 16e:	18 95       	reti
+ 100:	9f 91       	pop	r25
+ 102:	8f 91       	pop	r24
+ 104:	0f 90       	pop	r0
+ 106:	0f be       	out	0x3f, r0	; 63
+ 108:	0f 90       	pop	r0
+ 10a:	1f 90       	pop	r1
+ 10c:	18 95       	reti
 
-00000170 <_exit>:
- 170:	f8 94       	cli
+0000010e <_exit>:
+ 10e:	f8 94       	cli
 
-00000172 <__stop_program>:
- 172:	ff cf       	rjmp	.-2      	; 0x172 <__stop_program>
+00000110 <__stop_program>:
+ 110:	ff cf       	rjmp	.-2      	; 0x110 <__stop_program>
