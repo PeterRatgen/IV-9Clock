@@ -7,6 +7,7 @@ The goal of this project is to make a clock with IV-9 numitrons.
 - Development component list **(WIP)**
 - Program development, for this the Arduino will be used **(WIP)**
 - Custom board schematic
+- Prototyping
 - Assembly and finish
 
 ## Preliminary board schematic
